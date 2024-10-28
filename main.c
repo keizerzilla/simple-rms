@@ -1,16 +1,20 @@
+/**
+ * \file main.c
+ * \author Artur Rodrigues Rocha Neto
+ * \date 2024
+ * \brief Demonstração da TAD definida pela 'signal.h'
+ */
+
 #include "signal.h"
 
 int main(int argc, char **argv) {
-	size_t size = 32;
-	struct signal *s = signal_new(size, 12000);
+	struct signal *s = signal_from_file("32k_samples.csv");
 	
 	if (s == NULL)
 		printf("Erro ao alocar memória suficiente!");
 	
-	for (int i = 0; i < size; i++)
-		printf("%f\n", s->array[i]);
+	printf("RMS = %f\n", signal_rms(s));
 	
-	signal_debug(s, stdout);
 	signal_free(s);
 	
 	return 0;

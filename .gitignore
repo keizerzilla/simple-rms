@@ -1,3 +1,6 @@
+# Specific file for this project
+*.exec
+
 # Prerequisites
 *.d
 

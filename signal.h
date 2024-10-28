@@ -8,33 +8,34 @@
 #ifndef RMS_H
 #define RMS_H
 
-#include <stdlib.h>
-#include <stdio.h>
 #include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-#define SIGNAL_MAX_SIZE 115200
+/**
+ * \var real
+ * \brief Máscara para o tipo ponto flutuante; mudar em função da precisão do sistema (preprocessor?)
+ */
+typedef float real;
 
 struct signal {
 	size_t size;
-	size_t samplerate;
-	float *array;
+	real *array;
 };
 
 /**
  * \brief Cria um novo sinal vazio.
  * \param size Tamanho do sinal.
- * \param samplerate Taxa de amostragem usada para gerar o sinal.
  * \return Ponteiro para.
  */
-struct signal *signal_new(size_t size, size_t samplerate);
+struct signal *signal_new(size_t size);
 
 /**
- * \brief Cria sinal lendo o conteúdo de um arquivo-texto onde cada linha é um float do sinal.
+ * \brief Cria sinal lendo o conteúdo de um arquivo-texto onde cada linha é um 'real' do sinal.
  * \param filename Caminho para o arquivo.
- * \param samplerate Taxa de amostragem usada para gerar o sinal.
  * \return Ponteiro para.
  */
-struct signal *signal_from_file(char *filename, size_t samplerate);
+struct signal *signal_from_file(char *filename);
 
 /**
  * \brief Libera memória alocada por um sinal.
@@ -48,5 +49,19 @@ void signal_free(struct signal *s);
  * \param output Arquivo onde a informação de debug deve ser mostrada.
  */
 void signal_debug(struct signal *s, FILE *output);
+
+/**
+ * \brief Calcula RMS do sinal.
+ * \param s Sinal a ser debugado.
+ * \return Valor do RMS.
+ */
+real signal_rms(struct signal *s);
+
+/**
+ * \brief Calcula RMS do sinal (versão rápida e menos precisa).
+ * \param s Sinal a ser debugado.
+ * \return Valor do RMS.
+ */
+real signal_fast_rms(struct signal *s);
 
 #endif // RMS_H
