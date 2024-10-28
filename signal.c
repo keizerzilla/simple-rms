@@ -32,7 +32,7 @@ struct signal *signal_from_file(char *filename)
 	if (file == NULL)
 		return NULL;
 	
-	real v = 0;
+	real v = 0.0f;
 	size_t size = 0;
 	while (!feof(file) && (fscanf(file, "%f\n", &v) != EOF))
 		size = size + 1;
@@ -75,10 +75,13 @@ void signal_debug(struct signal *s, FILE *output)
 
 real signal_rms(struct signal *s)
 {
-	return 69420;
-}
-
-real signal_fast_rms(struct signal *s)
-{
-	return 69420;
+	real rms = 0.0f;
+	
+	for (int i = 0; i < s->size; i++)
+		rms += (s->array[i] * s->array[i]);
+	
+	rms /= s->size;
+	rms = sqrt(rms);
+	
+	return rms;
 }

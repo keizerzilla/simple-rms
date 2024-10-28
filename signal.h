@@ -57,11 +57,4 @@ void signal_debug(struct signal *s, FILE *output);
  */
 real signal_rms(struct signal *s);
 
-/**
- * \brief Calcula RMS do sinal (versão rápida e menos precisa).
- * \param s Sinal a ser debugado.
- * \return Valor do RMS.
- */
-real signal_fast_rms(struct signal *s);
-
 #endif // RMS_H
