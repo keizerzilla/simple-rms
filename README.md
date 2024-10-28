@@ -4,9 +4,9 @@ Implementação de uma TAD simples de vetores unidimensionais e cálculo de RMS 
 
 ## Código
 
-`signal.h`: Assinaturas da TAD de sinal, além de declarações para o pré-processador. 
-`signal.c`: Implementação da TAD.
-`main.c`: Demo.
+- `signal.h`: Assinaturas da TAD de sinal, além de declarações para o pré-processador. 
+- `signal.c`: Implementação da TAD.
+- `main.c`: Demo.
 
 ## Demo
 
