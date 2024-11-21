@@ -1,8 +1,8 @@
 /**
- * \file main.c
+ * \file demo.c
  * \author Artur Rodrigues Rocha Neto
  * \date 2024
- * \brief Demonstração da TAD definida pela 'signal.h'
+ * \brief Demonstração da TAD definida em 'signal.h'
  */
 
 #include "signal.h"
